@@ -3,7 +3,9 @@ import "./styles/planet.css"
 function Planet() {
   return (
   <section className="planets">
-    planets sssssssss
+    <article className="planet">
+     
+    </article>
   </section>
   )
 }
