@@ -3,10 +3,10 @@ import './App.css'
 import HomePage from './pages/HomePage'
 import FavoritePage from './pages/FavoritePage'
 import { Route, Routes } from 'react-router-dom'
-import PlanetDetails from './components/PlanetDetails'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import PlanetType from './models/planetTyp'
+import PlanetPage from './pages/PlanetPage'
 
 function App() {
 
@@ -60,9 +60,9 @@ useEffect(()=>{
 
  
 
-      <Route path="/" element={ <HomePage planets={planets} />}/>   
+      <Route path="/" element={<HomePage planets={planets} />}/>   
       <Route path="/favoritePage/:id" element={ <FavoritePage/>}/>   
-      <Route path="/planetDetails/:id" element={ <PlanetDetails/>}/>
+      <Route path="/planetPage/:planeId" element={ <PlanetPage planets={planets}/>}/>
  
   </Routes>
 

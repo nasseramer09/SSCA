@@ -1,3 +1,4 @@
+import Planet from "../components/Planet";
 import PlanetNav from "../components/PlanetNav"
 import PlanetType from "../models/planetTyp";
 import "./styles/homePage.css"
@@ -11,7 +12,15 @@ type HomePageProps={
 function HomePage ({planets}:HomePageProps){
   return (
     <section className="homePage">
-       <PlanetNav planets={planets}/>
+    <PlanetNav planet={planets}/> 
+    <Planet planet={planets}/>
+    {/* {
+      planets.map((planet)=>(
+        <Planet key={planet.id} planet={planet}/>
+      ))
+    } */}
+
+      
     </section>
   )
 }
