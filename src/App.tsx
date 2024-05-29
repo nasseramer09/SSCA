@@ -6,15 +6,17 @@ import { Route, Routes } from 'react-router-dom'
 import PlanetDetails from './components/PlanetDetails'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import PlanetType from './models/planetTyp'
 
 function App() {
 
-const [planets, setPlanets]= useState<Planet[]>([]);
+const [planets, setPlanets]= useState<PlanetType[]>([]);
 const [key, setKey]=useState('');
 
 const getApiKey = async ()=>{
   try{
       const response= await axios.post('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/keys')
+      //sk raderas sedan
       const apiKey= response.data.key;
       console.log(apiKey)
       setKey(apiKey);
@@ -30,7 +32,8 @@ const getPlanetData = async (key: string) => {
     const response= await  axios.get('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/bodies', {
     headers : { 'x-zocom' : key}
 });
-setPlanets(response.data);
+setPlanets(response.data.bodies);
+      //sk raderas sedan
 console.log(response.data)
   } catch (error){
   console.error(error);
@@ -57,7 +60,7 @@ useEffect(()=>{
 
  
 
-      <Route path="/" element={ <HomePage/>}/>   
+      <Route path="/" element={ <HomePage planets={planets} />}/>   
       <Route path="/favoritePage/:id" element={ <FavoritePage/>}/>   
       <Route path="/planetDetails/:id" element={ <PlanetDetails/>}/>
  

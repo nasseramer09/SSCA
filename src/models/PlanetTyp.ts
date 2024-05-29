@@ -1,6 +1,6 @@
 
 
-type Planet={
+type PlanetType={
     id:number;
     type:string;
     name:string;
@@ -8,9 +8,9 @@ type Planet={
     rotation:number;
     circumference:number;
     temp:Temp
-    distnce:number;
+    distance:number;
     orbitalPeriod:number;
-    dec:string;
+    desc:string;
     mons:[];
 }
 
@@ -19,3 +19,5 @@ type Temp={
     day:number;
     night:number;
 }
+
+export default PlanetType;

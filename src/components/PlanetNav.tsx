@@ -1,28 +1,47 @@
+import { useState } from 'react';
+import PlanetType from '../models/planetTyp';
 import   './styles/planetNav.css'
+type NavPageProps={
 
-function PlanetNav() {
+  planets:PlanetType[];
+
+}
+
+function PlanetNav({planets}:NavPageProps) {
+
+  const [onHover, setOnHover]=useState<string>();
+  
+  const mouseOnEnter =(planetName:string)=>{
+    setOnHover(planetName)
+  }
+
+  const mouseOnNotEnter =()=>{
+    setOnHover('Solaris Space Center')
+  }
+
+
   return (
    <nav className="planetNav">
-
     <div className="navbuttons">
     <ul className="buttons">
         <li> Home page </li>
         <li>Favorite Planets </li>
       </ul>
     </div>
-     <h1 className="nameDsiplayer">Solaris Space Center </h1>
+     <h1 className="nameDsiplayer">{onHover||'Solaris Space Center'} </h1>
 
 <div className="planetWraper">
-   <div className="solen"></div>
-      <div className="merkurius"></div>
-      <div className="venus"> </div>
-      <div className="jorden">  </div>
-      <div className="mars">  </div>
-      <div className="jupiter">  </div>
-      <div className="ringen"></div>
-      <div className="saturnus"> </div>
-      <div className="uranus">  </div>
-      <div className="neptunus">  </div>
+      {planets.map(planet=>(
+<div
+    key={planet.id}
+    className={planet.name.toLowerCase()}
+    onMouseEnter={()=>mouseOnEnter(planet.name)}
+    onMouseLeave={mouseOnNotEnter}
+>
+</div>
+
+      ))}
+
 </div>
    </nav>
   )

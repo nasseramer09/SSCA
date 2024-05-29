@@ -1,10 +1,17 @@
 import PlanetNav from "../components/PlanetNav"
+import PlanetType from "../models/planetTyp";
 import "./styles/homePage.css"
 
-function HomePage() {
+type HomePageProps={
+
+  planets:PlanetType[];
+
+}
+
+function HomePage ({planets}:HomePageProps){
   return (
     <section className="homePage">
-       <PlanetNav/>
+       <PlanetNav planets={planets}/>
     </section>
   )
 }
