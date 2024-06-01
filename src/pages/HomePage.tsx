@@ -1,26 +1,19 @@
 import Planet from "../components/Planet";
-import PlanetNav from "../components/PlanetNav"
 import PlanetType from "../models/planetTyp";
 import "./styles/homePage.css"
 
 type HomePageProps={
 
   planets:PlanetType[];
+  planetFavoList:PlanetType[];
+  togglePlanetFavoList:(planet:PlanetType)=>void
 
 }
 
-function HomePage ({planets}:HomePageProps){
+function HomePage ({planets, planetFavoList, togglePlanetFavoList}:HomePageProps){
   return (
     <section className="homePage">
-    <PlanetNav planet={planets}/> 
-    <Planet planet={planets}/>
-    {/* {
-      planets.map((planet)=>(
-        <Planet key={planet.id} planet={planet}/>
-      ))
-    } */}
-
-      
+    <Planet planet={planets} planetFavoList={planetFavoList} togglePlanetFavoList={togglePlanetFavoList}/>
     </section>
   )
 }

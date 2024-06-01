@@ -11,7 +11,8 @@ type PlanetType={
     distance:number;
     orbitalPeriod:number;
     desc:string;
-    mons:[];
+    moons:string [];
+    color:string;
 }
 
 type Temp={

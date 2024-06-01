@@ -1,19 +1,22 @@
-import PlanetType from '../models/planetTyp'
+import { Link } from 'react-router-dom';
 import   './styles/planetNav.css'
-type PlanetNavProps={
-  planet:PlanetType[];
-}
-function PlanetNav({planet}:PlanetNavProps) {
+
+function PlanetNav() {
 
   return (
 
 
    <nav className="planetNav">
-    <div className='favWraper'> 
-
-      <i className='material-icons'>favorite</i> 
-      <span className='favSpan'>Favorite Planets  </span>  
-      </div>
+    
+      <Link className={"favLink"} to={"FavoritePage"}>
+       <i className='material-icons'>favorite</i> 
+        <span className='favSpan'>Favorite Planets  </span>
+      </Link>
+       
+       
+     
+      
+     
 
 
    </nav>

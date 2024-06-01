@@ -7,23 +7,26 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import PlanetType from './models/planetTyp'
 import PlanetPage from './pages/PlanetPage'
+import PlanetNav from './components/PlanetNav'
+
 
 function App() {
 
 const [planets, setPlanets]= useState<PlanetType[]>([]);
 const [key, setKey]=useState('');
+const [planetFavoList, setPlanetFavoList]=useState<PlanetType[]>([]);
 
 const getApiKey = async ()=>{
   try{
       const response= await axios.post('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/keys')
-      //sk raderas sedan
-      const apiKey= response.data.key;
-      console.log(apiKey)
+      
+      const apiKey= response.data.key
       setKey(apiKey);
-}catch(error){
+
+    }catch(error){
     console.error(error);
   
-}
+    }
 };
 
 
@@ -31,13 +34,11 @@ const getPlanetData = async (key: string) => {
   try{
     const response= await  axios.get('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/bodies', {
     headers : { 'x-zocom' : key}
-});
-setPlanets(response.data.bodies);
-      //sk raderas sedan
-console.log(response.data)
+  });
+    setPlanets(response.data.bodies);
   } catch (error){
-  console.error(error);
-}
+      console.error(error);
+    }
 };
 
 useEffect(()=>{
@@ -54,16 +55,30 @@ useEffect(()=>{
 },
 [key]);
 
+const togglePlanetFavoList=(planet:PlanetType)=>{
+  setPlanetFavoList(prevList=>{
+    const isFavorite=prevList.some(p=>p.id === planet.id);
+    if(isFavorite){
+      return prevList.filter(p=>p.id !== planet.id)
+    }else{
+      return[...prevList, planet]
+    }
+  })
+}
+
   return (
+    
     <div className="app">
+      <PlanetNav/>
 <Routes> 
 
  
 
-      <Route path="/" element={<HomePage planets={planets} />}/>   
-      <Route path="/favoritePage/:id" element={ <FavoritePage/>}/>   
-      <Route path="/planetPage/:planeId" element={ <PlanetPage planets={planets}/>}/>
- 
+      <Route path="/" element={<HomePage planets={planets} planetFavoList={planetFavoList} togglePlanetFavoList={togglePlanetFavoList}/>}/>   
+      
+      <Route path="/PlanetDetails/:planetId" element={ <PlanetPage planets={planets} planetFavoList={planetFavoList} togglePlanetFavoList={togglePlanetFavoList}
+                                                             />}/>
+      <Route path="/favoritePage" element={ <FavoritePage  planetFavoList={planetFavoList}/>}/>   
   </Routes>
 
     </div>
