@@ -1,0 +1,31 @@
+.planetNav{
+background-color: transparent;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+
+}
+
+.favLink{
+    width: 20%;
+    border: 2px solid black;
+    border-radius: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-decoration: none;
+   color: aliceblue;
+}
+.material-icons{
+    color: red;
+    font-size: 40px;
+    margin-top: 1%;
+}
+
+.favSpan{
+    font-size: 20px;
+    margin-right:5px;
+    margin-bottom: 1%;
+    
+}

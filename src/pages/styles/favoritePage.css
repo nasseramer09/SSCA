@@ -1,0 +1,88 @@
+.favo{
+    padding: 20px;
+    min-height: 100vh;
+    margin: 2%;
+}
+
+.favo h1 {
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 2 em;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    border-bottom: 2px solid red;
+
+}
+.favoWraper{
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.favoPlanetListCard{
+    background-color: #ffffff;
+    border: 1px solid #ff0000;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+
+}
+
+.favoPlanetListCard:hover{
+transform: scale(1.05);
+
+}
+.favPlanetName{
+    margin: 0;
+    font-size: 1.5em;
+   text-align: center;
+   padding: 16px;
+   color: #555;
+
+    }
+    
+.favoPlanetListCard{
+     padding: 16px;
+     color: #555;
+     flex-grow: 1;
+    }
+
+    .detailsLink{
+        padding: 16px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bolder;
+        border-top: 2px solid gold;
+        color: #555;
+        border-radius: 0 0 8px 8px;
+        background-color: #F1E5D1;
+
+    }
+
+    .detailsLink:hover{
+        background-color: #FFE8C5;
+      
+
+    }
+
+    .noFavo{
+        background-color: #FFE8C5;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.5rem;
+        height: 120px;      
+    }
+
+    .homeLink{
+        background-color: rgb(237, 169, 97);
+        text-decoration: none;
+
+    }
